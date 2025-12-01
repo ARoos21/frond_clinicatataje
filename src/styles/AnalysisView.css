@@ -1,0 +1,505 @@
+/* src/styles/AnalysisView.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary: #1e40af;
+  --primary-light: #3b82f6;
+  --teal: #0d9488;
+  --teal-light: #14b8a6;
+  --teal-bg: #f0fdfa;
+  --emerald: #10b981;
+  --amber: #f59e0b;
+  --blue: #3b82f6;
+  --red: #ef4444;
+  --text-dark: #0f172a;
+  --text-medium: #334155;
+  --text-light: #64748b;
+  --bg-light: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --radius: 16px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --transition: all 0.25s ease;
+}
+
+.analysis-container {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-dark);
+  padding-bottom: 2.5rem;
+}
+
+/* === Summary Card === */
+.analysis-summary-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.analysis-summary-content {
+  flex: 1;
+  min-width: 250px;
+}
+
+.analysis-summary-header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.analysis-badge {
+  background: #ecfdf5;
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-date {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+.analysis-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.analysis-summary-text {
+  color: var(--text-medium);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+/* === Health Score === */
+.analysis-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+}
+
+.analysis-score-circle {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.analysis-score-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.analysis-score-track {
+  stroke: #e2e8f0;
+  stroke-width: 8;
+  fill: transparent;
+}
+
+.analysis-score-progress {
+  stroke-width: 8;
+  fill: transparent;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.analysis-score-progress {
+  stroke: var(--emerald);
+}
+
+.analysis-overall-health-score[data-score="medium"] .analysis-score-progress {
+  stroke: var(--amber);
+}
+
+.analysis-overall-health-score[data-score="low"] .analysis-score-progress {
+  stroke: var(--red);
+}
+
+.analysis-score-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.analysis-score-value span:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.analysis-score-label {
+  font-size: 0.65rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === Grid Layout === */
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+/* === Biomarkers Section === */
+.analysis-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.analysis-section-icon {
+  color: var(--teal);
+  width: 20px;
+  height: 20px;
+}
+
+.analysis-biomarkers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.analysis-biomarker-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+
+.analysis-biomarker-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.analysis-biomarker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.analysis-biomarker-icon {
+  background: var(--bg-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.analysis-status-icon-normal {
+  color: var(--emerald);
+  width: 20px;
+  height: 20px;
+}
+.analysis-status-icon-high {
+  color: var(--amber);
+  width: 20px;
+  height: 20px;
+}
+.analysis-status-icon-low {
+  color: var(--blue);
+  width: 20px;
+  height: 20px;
+  transform: rotate(-90deg);
+}
+.analysis-status-icon-critical {
+  color: var(--red);
+  width: 20px;
+  height: 20px;
+}
+.analysis-status-icon-default {
+  color: #94a3b8;
+  width: 20px;
+  height: 20px;
+}
+
+.analysis-biomarker-info {
+  flex: 1;
+}
+
+.analysis-biomarker-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.analysis-biomarker-unit {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-biomarker-value-container {
+  text-align: right;
+}
+
+.analysis-biomarker-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: block;
+}
+
+.analysis-status-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
+.analysis-status-normal {
+  background: #ecfdf5;
+  color: var(--emerald);
+}
+.analysis-status-alto {
+  background: #fffbeb;
+  color: var(--amber);
+}
+.analysis-status-bajo {
+  background: #eff6ff;
+  color: var(--blue);
+}
+.analysis-status-crítico {
+  background: #fef2f2;
+  color: var(--red);
+}
+
+.analysis-biomarker-explanation {
+  background: var(--bg-light);
+  padding: 0.75rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  border: 1px solid var(--border);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+/* === Sidebar === */
+.analysis-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === Chart Card === */
+.analysis-chart-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.analysis-chart-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.analysis-chart-wrapper {
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.analysis-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.analysis-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--text-medium);
+}
+
+.analysis-legend-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* === Recommendations === */
+.analysis-recommendations-card {
+  background: linear-gradient(135deg, #0f766e, #0d9488);
+  color: white;
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(15, 118, 110, 0.3);
+}
+
+.analysis-recommendations-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.analysis-recommendations-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.analysis-rec-title-icon {
+  color: #a7f3d0;
+  width: 20px;
+  height: 20px;
+}
+
+.analysis-recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.analysis-recommendation-item {
+  display: flex;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.875rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s;
+}
+
+.analysis-recommendation-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.analysis-rec-type-icon {
+  background: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #0f766e;
+}
+
+.analysis-rec-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.analysis-rec-content {
+  flex: 1;
+}
+
+.analysis-rec-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #e0f2fe;
+}
+
+.analysis-rec-desc {
+  font-size: 0.8rem;
+  color: #ccfbf1;
+  line-height: 1.5;
+}
+
+/* === Reset Button === */
+.analysis-reset-btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  background: white;
+  color: var(--text-medium);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.analysis-reset-btn:hover {
+  background: #f1f5f9;
+  color: var(--text-dark);
+  border-color: #cbd5e1;
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-summary-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .analysis-score-card {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .analysis-summary-card {
+    padding: 1.5rem;
+  }
+
+  .analysis-title {
+    font-size: 1.25rem;
+  }
+
+  .analysis-section-title {
+    font-size: 1rem;
+  }
+}

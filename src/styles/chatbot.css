@@ -1,0 +1,45 @@
+/* Estilos del widget del chatbot */
+df-messenger {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9999;
+
+  /* Oculto por defecto */
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+df-messenger.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Botón flotante */
+.chatbot-toggler {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+
+  background: #007bff;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 10000;
+  transition: 0.2s;
+}
+
+.chatbot-toggler:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+}
